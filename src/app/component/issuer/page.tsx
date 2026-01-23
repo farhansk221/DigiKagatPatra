@@ -1,6 +1,6 @@
 "use client";
 
-import DashboardLayout from "../dashboard/DashboardLayout";
+import DashboardLayout from "../../dashboard/DashboardLayout";
 
 export default function IssuerPage() {
   return (
