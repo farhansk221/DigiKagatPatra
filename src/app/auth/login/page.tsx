@@ -17,13 +17,13 @@ export default function LoginPage() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     await signInWithEmailAndPassword(auth, email, password);
-    router.push("/dashboard");
+    router.push("/component/dashboard");
   };
 
   const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
     await signInWithPopup(auth, provider);
-    router.push("/dashboard");
+    router.push("/component/dashboard");
   };
 
   return (
@@ -51,12 +51,12 @@ export default function LoginPage() {
 
 
         <button className="btn-secondary" onClick={handleGoogleLogin}>
-          Login with Google
+          Continue with Google
         </button>
         <button
           className="btn-secondary"
           style={{ marginTop: "12px" }}
-          onClick={() => router.push("/signup")}
+          onClick={() => router.push("/auth/signup")}
         >
           Create new account
         </button>

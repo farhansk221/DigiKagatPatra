@@ -20,14 +20,14 @@ export default function Home() {
         <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
           <button
             className="btn-primary"
-            onClick={() => router.push("/login")}
+            onClick={() => router.push("/auth/login")}
           >
             Sign In
           </button>
 
           <button
             className="btn-secondary"
-            onClick={() => router.push("/signup")}
+            onClick={() => router.push("/auth/signup")}
           >
             Sign Up
           </button>

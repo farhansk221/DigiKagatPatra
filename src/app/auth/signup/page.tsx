@@ -13,7 +13,7 @@ export default function SignupPage() {
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     await createUserWithEmailAndPassword(auth, email, password);
-    router.push("/dashboard");
+    router.push("/component/dashboard");
   };
 
   return (
@@ -39,7 +39,7 @@ export default function SignupPage() {
           <button className="btn-primary">Sign Up</button>
           <button  className="btn-secondary"
           style={{ marginTop: "12px" }}
-          onClick={() => router.push("/login")}
+          onClick={() => router.push("/auth/login")}
         >
           Already registered
         </button>
