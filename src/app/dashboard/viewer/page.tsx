@@ -1,6 +1,6 @@
 "use client";
 
-import DashboardLayout from "../../dashboard/DashboardLayout";
+import DashboardLayout from "../DashboardLayout";
 
 export default function ViewerPage() {
   return (
@@ -11,5 +11,4 @@ export default function ViewerPage() {
     </DashboardLayout>
   );
 }
-
 

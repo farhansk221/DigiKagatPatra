@@ -1,6 +1,6 @@
 "use client";
 
-import DashboardLayout from "../../dashboard/DashboardLayout";
+import DashboardLayout from "../DashboardLayout";
 
 export default function StampingAuthorityPage() {
   return (
@@ -11,5 +11,4 @@ export default function StampingAuthorityPage() {
     </DashboardLayout>
   );
 }
-
 

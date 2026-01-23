@@ -19,9 +19,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
   const navItems = [
     { label: "Dashboard", path: "/dashboard" },
-    { label: "Issuer", path: "/component/issuer" },
-    { label: "Stamping Authority", path: "/component/stamping-authority" },
-    { label: "Viewer", path: "/component/viewer" },
+    { label: "Issuer", path: "/dashboard/issuer" },
+    { label: "Stamping Authority", path: "/dashboard/stamping-authority" },
+    { label: "Viewer", path: "/dashboard/viewer" },
   ];
 
   return (
