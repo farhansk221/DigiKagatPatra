@@ -1,13 +1,9 @@
 "use client";
 
-import {
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider,
-} from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { auth } from "@/config/firebase";
+import { auth, AuthService } from "@/config/firebase";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -16,7 +12,7 @@ export default function LoginPage() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    await signInWithEmailAndPassword(auth, email, password);
+    await AuthService.loginWithEmail(email, password);
     router.push("/component/dashboard");
   };
 

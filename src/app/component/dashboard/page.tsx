@@ -1,28 +1,19 @@
 "use client";
 
-import { signOut } from "firebase/auth";
-import { useRouter } from "next/navigation";
-import { auth } from "@/config/firebase";
+import DashboardLayout from "./DashboardLayout";
 
 export default function DashboardPage() {
-  const router = useRouter();
-
-  const logout = async () => {
-    await signOut(auth);
-    router.push("/login");
-  };
-
   return (
-    <div className="page">
-      <div className="auth-card">
-        <h2 className="auth-title">Dashboard</h2>
-        <p style={{ color: "#0B3C5D", marginBottom: "16px" }}>
-          You are logged in 🎉
-        </p>
-        <button className="btn-primary" onClick={logout}>
-          Logout
-        </button>
+    <DashboardLayout>
+      <div className="dashboard-header">
+        <h1 className="dashboard-title">Dashboard</h1>
       </div>
-    </div>
+      <div className="dashboard-content">
+        <p className="welcome-message">Welcome to DigiKagatPatra</p>
+        <p className="welcome-subtitle">
+          Select an option from the sidebar to continue.
+        </p>
+      </div>
+    </DashboardLayout>
   );
 }

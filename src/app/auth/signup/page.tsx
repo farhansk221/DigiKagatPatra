@@ -1,9 +1,8 @@
 "use client";
 
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { auth } from "@/config/firebase";
+import { AuthService } from "@/config/firebase";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -12,7 +11,7 @@ export default function SignupPage() {
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-    await createUserWithEmailAndPassword(auth, email, password);
+    await AuthService.signupWithEmail(email, password);
     router.push("/component/dashboard");
   };
 
