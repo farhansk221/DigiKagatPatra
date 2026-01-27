@@ -14,7 +14,7 @@ export default function EditDocument() {
       <br /><br />
 
       {/* REDIRECT BACK */}
-      <Link href="/dumo_user/documents/view">
+      <Link href="/demo_users/documents/view">
         Back to View
       </Link>
     </div>

@@ -7,12 +7,12 @@ export default function DocumentsPage() {
 
       <ul>
         <li>
-          <Link href="/dumo_user/documents/view">
+          <Link href="/demo_users/documents/view">
             Marksheet
           </Link>
         </li>
         <li>
-          <Link href="/dumo_user/documents/view">
+          <Link href="/demo_users/documents/view">
             Degree Certificate
           </Link>
         </li>

@@ -7,7 +7,7 @@ export default function DemoUserLayout({
 }) {
   return (
     <div>
-      <h2>Dumo User Module</h2>
+      <h2>Demo User Module</h2>
 
       <nav style={{ marginBottom: "10px" }}>
         <Link href="/demo_users/dashboard">Dashboard</Link> |{" "}
