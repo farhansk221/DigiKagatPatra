@@ -4,6 +4,7 @@ import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { auth, AuthService } from "@/config/firebase";
+import Link from "next/link";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -56,6 +57,7 @@ export default function LoginPage() {
         >
           Create new account
         </button>
+        <Link href="/auth/forget"><h2>Forget Password</h2></Link>
       </div>
     </div>
   );

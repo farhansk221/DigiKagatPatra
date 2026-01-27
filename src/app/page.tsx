@@ -12,12 +12,8 @@ export default function Home() {
         <div className="sidebar-header">
           <h1 className="sidebar-title">DigiKagatPatra</h1>
         </div>
-
-        <div className="sidebar-footer">
-          <div className="footer-logo">N</div>
-          <span className="footer-text">of India</span>
-        </div>
       </aside>
+      
 
       {/* Main Content */}
       <main className="dashboard-main">

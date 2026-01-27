@@ -43,10 +43,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           ))}
         </nav>
 
-        <div className="sidebar-footer">
-          <div className="footer-logo">N</div>
-          <span className="footer-text">of India</span>
-        </div>
+        
       </aside>
 
       {/* Main Content */}
