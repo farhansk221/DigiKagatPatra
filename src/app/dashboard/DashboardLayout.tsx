@@ -18,9 +18,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   };
 
   const navItems = [
-    { label: "Dashboard", path: "/dashboard" },
-    { label: "Organization", path: "/org" },
-    { label: "Users", path: "/org/users" },
+    { label: "Dashboard", path: "/admin/dashboard" },
+    { label: "Organization", path: "/admin/org" },
+    { label: "Users", path: "/admin/users" },
   ];
 
   return (

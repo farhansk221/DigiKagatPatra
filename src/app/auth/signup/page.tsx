@@ -12,7 +12,7 @@ export default function SignupPage() {
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     await AuthService.signupWithEmail(email, password);
-    router.push("/dashboard");
+    router.push("/admin/dashboard");
   };
 
   return (

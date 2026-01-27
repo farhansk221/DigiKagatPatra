@@ -14,13 +14,13 @@ export default function LoginPage() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     await AuthService.loginWithEmail(email, password);
-    router.push("/dashboard");
+    router.push("/admin/dashboard");
   };
 
   const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
     await signInWithPopup(auth, provider);
-    router.push("/dashboard");
+    router.push("/admin/dashboard");
   };
 
   return (
