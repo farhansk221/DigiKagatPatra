@@ -6,7 +6,7 @@ import { organizations } from "@/data/organizations";
 export default function DashboardPage() {
   return (
     <div style={card}>
-      <h3>Admin · Organizations</h3>
+      <h3>Organizations</h3>
       <p style={{ marginBottom: "20px", color: "#666" }}>Select an organization to manage its users.</p>
       
       <table style={tableStyle}>
