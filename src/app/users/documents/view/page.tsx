@@ -7,7 +7,7 @@ export default function ViewDocument() {
       <p>This is the document content.</p>
 
       {/* REDIRECT TO EDIT */}
-      <Link href="/demo_users/documents/view/edit">
+      <Link href="/users/documents/view/edit">
         Edit Document
       </Link>
     </div>
