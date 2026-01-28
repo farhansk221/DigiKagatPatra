@@ -15,7 +15,7 @@ export type Organization = {
 // Demo organizations with users
 export const organizations: Organization[] = [
   {
-    id: "org-1",
+    id: "BMC",
     name: "DigiKagatPatra HQ",
     country: "India",
     users: [
@@ -27,7 +27,7 @@ export const organizations: Organization[] = [
     ],
   },
   {
-    id: "org-2",
+    id: "TMC",
     name: "Maharashtra Stamp Dept",
     country: "India",
     users: [
@@ -38,7 +38,7 @@ export const organizations: Organization[] = [
     ],
   },
   {
-    id: "org-3",
+    id: "KMC",
     name: "Delhi High Court",
     country: "India",
     users: [
