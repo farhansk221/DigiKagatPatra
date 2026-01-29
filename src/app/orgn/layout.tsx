@@ -27,9 +27,13 @@ export default function OrgLayout({
             Settings
           </Link>
         </nav>
+       
       </aside>
+     
 
       <main style={styles.content}>{children}</main>
+   
+      
     </div>
   );
 }
@@ -68,4 +72,4 @@ const styles = {
     padding: "24px",
     color: "#1A1A1A",
   },
-};
+}
