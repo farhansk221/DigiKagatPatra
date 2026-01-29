@@ -18,7 +18,7 @@ export default function AdminLayout({
       <footer
         className="section-footer"
         style={{
-          marginLeft: "250px", // align with sidebar
+          marginLeft: "250px", 
         }}
       >
         <div
