@@ -1,6 +1,5 @@
 "use client";
 
-import DashboardLayout from "@/app/dashboard/DashboardLayout";
 import { organizations } from "@/data/organizations";
 
 export default function AdminUsersPage() {
