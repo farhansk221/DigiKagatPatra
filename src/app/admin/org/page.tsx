@@ -8,7 +8,7 @@ export default function AdminOrgListPage() {
   const router = useRouter();
 
   return (
-    <DashboardLayout>
+    
       <div className="dashboard-content">
         <div className="dashboard-header">
           <h1 className="dashboard-title">Admin · Organizations</h1>
@@ -47,7 +47,7 @@ export default function AdminOrgListPage() {
           </tbody>
         </table>
       </div>
-    </DashboardLayout>
+    
   );
 }
 

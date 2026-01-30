@@ -13,7 +13,7 @@ export default function AdminUsersPage() {
   );
 
   return (
-    <DashboardLayout>
+    
       <div className="dashboard-content">
         <div className="dashboard-header">
           <h1 className="dashboard-title">Admin · All Users</h1>
@@ -43,7 +43,7 @@ export default function AdminUsersPage() {
           </tbody>
         </table>
       </div>
-    </DashboardLayout>
+   
   );
 }
 
