@@ -1,15 +1,8 @@
 export default function InviteUserPage() {
   return (
-    <div style={card}>
-      <h3>Invite User</h3>
-      <p>Send invitation to join organization.</p>
+    <div className="bg-white p-5 rounded-md border border-gray-300">
+      <h3 className="text-lg text-white font-semibold">Invite User</h3>
+      <p className="text-gray-600 mt-2">Send invitation to join organization.</p>
     </div>
   );
 }
-
-const card = {
-  backgroundColor: "#fff",
-  padding: "20px",
-  borderRadius: "6px",
-  border: "1px solid #E0E0E0",
-};

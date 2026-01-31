@@ -16,51 +16,57 @@ export default function UsersPage({ params }: UsersPageProps) {
   const users = selectedOrg ? selectedOrg.users : [];
 
   return (
-    <div style={card}>
-      <div style={headerContainer}>
-        <h3>
+    <div className="bg-white p-5 rounded-md border border-gray-300">
+      <div className="flex justify-between items-center mb-5">
+        <h3 className="text-lg font-semibold">
           {selectedOrg ? `${selectedOrg.name} · Users` : "Organization Users"}
         </h3>
-        <Link href="/orgn/users/invite" style={inviteButtonStyle}>
+        <Link href="/orgn/users/invite" className="px-4 py-2 bg-[#003366] text-white rounded text-sm font-medium hover:bg-[#002244] transition-colors inline-block">
           Invite User
         </Link>
       </div>
 
       {selectedOrg && (
-        <p style={subText}>
+        <p className="mb-5 text-gray-600">
           Managing {users.length} user(s) in {selectedOrg.name}
         </p>
       )}
 
       {users.length > 0 ? (
-        <table style={tableStyle}>
-          <thead>
-            <tr style={headerRowStyle}>
-              <th style={headerCellStyle}>ID</th>
-              <th style={headerCellStyle}>Name</th>
-              <th style={headerCellStyle}>Email</th>
-              <th style={headerCellStyle}>Role</th>
-              <th style={headerCellStyle}>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => (
-              <tr key={user.id} style={bodyRowStyle}>
-                <td style={cellStyle}>{user.id}</td>
-                <td style={cellStyle}>{user.name}</td>
-                <td style={cellStyle}>{user.email}</td>
-                <td style={cellStyle}>
-                  <span style={roleStyle}>{user.role}</span>
-                </td>
-                <td style={cellStyle}>
-                  <button style={actionButtonStyle}>Edit</button>
-                </td>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse">
+            <thead>
+              <tr className="bg-gray-100 border-b-2 border-gray-300">
+                <th className="px-3 py-3 text-left font-semibold text-[#003366]">ID</th>
+                <th className="px-3 py-3 text-left font-semibold text-[#003366]">Name</th>
+                <th className="px-3 py-3 text-left font-semibold text-[#003366]">Email</th>
+                <th className="px-3 py-3 text-left font-semibold text-[#003366]">Role</th>
+                <th className="px-3 py-3 text-left font-semibold text-[#003366]">Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {users.map((user) => (
+                <tr key={user.id} className="border-b border-gray-300">
+                  <td className="px-3 py-3 text-left">{user.id}</td>
+                  <td className="px-3 py-3 text-left">{user.name}</td>
+                  <td className="px-3 py-3 text-left">{user.email}</td>
+                  <td className="px-3 py-3 text-left">
+                    <span className="inline-block px-2 py-1 bg-[#e8f0f7] text-[#003366] rounded text-xs font-medium">
+                      {user.role}
+                    </span>
+                  </td>
+                  <td className="px-3 py-3 text-left">
+                    <button className="px-3 py-1.5 bg-gray-100 border border-gray-300 rounded text-xs cursor-pointer hover:bg-gray-200 transition-colors">
+                      Edit
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       ) : (
-        <p style={emptyMessage}>
+        <p className="py-5 text-center text-gray-600">
           {selectedOrg
             ? "No users in this organization yet."
             : "Organization not found."}
@@ -70,82 +76,3 @@ export default function UsersPage({ params }: UsersPageProps) {
   );
 }
 
-const card = {
-  backgroundColor: "#fff",
-  padding: "20px",
-  borderRadius: "6px",
-  border: "1px solid #E0E0E0",
-};
-
-const headerContainer = {
-  display: "flex" as const,
-  justifyContent: "space-between",
-  alignItems: "center",
-  marginBottom: "20px",
-};
-
-const inviteButtonStyle = {
-  padding: "8px 16px",
-  backgroundColor: "#003366",
-  color: "#fff",
-  borderRadius: "4px",
-  textDecoration: "none",
-  fontSize: "14px",
-  fontWeight: "500",
-};
-
-const subText = {
-  marginBottom: "20px",
-  color: "#666",
-};
-
-const tableStyle = {
-  width: "100%",
-  borderCollapse: "collapse" as const,
-};
-
-const headerRowStyle = {
-  backgroundColor: "#f5f5f5",
-  borderBottom: "2px solid #ddd",
-};
-
-const headerCellStyle = {
-  padding: "12px",
-  textAlign: "left" as const,
-  fontWeight: "600",
-  color: "#003366",
-};
-
-const bodyRowStyle = {
-  borderBottom: "1px solid #E0E0E0",
-};
-
-const cellStyle = {
-  padding: "12px",
-  textAlign: "left" as const,
-};
-
-const roleStyle = {
-  display: "inline-block",
-  padding: "4px 8px",
-  backgroundColor: "#e8f0f7",
-  color: "#003366",
-  borderRadius: "4px",
-  fontSize: "12px",
-  fontWeight: "500",
-};
-
-const actionButtonStyle = {
-  padding: "6px 12px",
-  backgroundColor: "#f5f5f5",
-  border: "1px solid #ddd",
-  borderRadius: "4px",
-  cursor: "pointer",
-  fontSize: "12px",
-};
-
-const emptyMessage = {
-  padding: "20px",
-  textAlign: "center" as const,
-  color: "#999",
-};

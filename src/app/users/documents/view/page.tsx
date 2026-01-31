@@ -10,7 +10,7 @@ export default function ViewDocument() {
 
       <Link
         href="/users/documents/view/edit"
-        className="text-blue-600 hover:underline"
+        className="text-[#1F5F8B] hover:underline inline-block"
       >
         Edit Document
       </Link>

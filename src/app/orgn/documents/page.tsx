@@ -9,7 +9,7 @@ export default function DocumentsPage() {
         <li>
           <Link
             href="/orgn/documents/create"
-            className="text-blue-600 hover:underline"
+            className="text-[#003366] font-medium hover:underline inline-block"
           >
             + Create Document
           </Link>
@@ -17,7 +17,7 @@ export default function DocumentsPage() {
         <li>
           <Link
             href="/orgn/documents/view"
-            className="text-blue-600 hover:underline"
+            className="text-[#003366] font-medium hover:underline inline-block"
           >
             Marksheet
           </Link>
@@ -25,7 +25,7 @@ export default function DocumentsPage() {
         <li>
           <Link
             href="/orgn/documents/view"
-            className="text-blue-600 hover:underline"
+            className="text-[#003366] font-medium hover:underline inline-block"
           >
             Degree Certificate
           </Link>
