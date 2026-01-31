@@ -1,5 +1,6 @@
 
 import { initializeApp, getApps, getApp } from "firebase/app";
+import { onAuthStateChanged, User } from "firebase/auth";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -33,6 +34,32 @@ export const AuthService = {
       console.error("Error logging in with email:", error);
       throw error;
     }
+  },
+
+    getUserAccessToken: async (
+    forceRefresh: boolean = false
+  ): Promise<string | null> => {
+    let user = auth.currentUser;
+
+    // If user is not immediately available, wait for auth state to resolve
+    if (!user) {
+      user = await new Promise<User | null>((resolve) => {
+        const unsubscribe = onAuthStateChanged(auth, (u) => {
+          unsubscribe();
+          resolve(u);
+        });
+      });
+    }
+
+    if (user) {
+      try {
+        return await user.getIdToken(forceRefresh);
+      } catch (error) {
+        console.error("Error getting access token:", error);
+        return null;
+      }
+    }
+    return null;
   },
 
   signupWithEmail: async (
