@@ -1,15 +1,8 @@
 export default function SettingsPage() {
   return (
-    <div style={card}>
-      <h3>Settings</h3>
-      <p>Organization preferences.</p>
+    <div className="bg-white p-5 rounded-md border border-gray-300">
+      <h3 className="text-lg font-semibold">Settings</h3>
+      <p className="text-gray-600">Organization preferences.</p>
     </div>
   );
 }
-
-const card = {
-  backgroundColor: "#fff",
-  padding: "20px",
-  borderRadius: "6px",
-  border: "1px solid #E0E0E0",
-};

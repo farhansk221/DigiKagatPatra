@@ -2,17 +2,23 @@ import Link from "next/link";
 
 export default function DocumentsPage() {
   return (
-    <div style={card}>
-      <h3>Documents</h3>
+    <div className="bg-white p-5 rounded-md border border-gray-300 max-w-xl">
+      <h3 className="text-lg font-semibold mb-3">Documents</h3>
 
-      <ul style={list}>
+      <ul className="list-none p-0 space-y-2">
         <li>
-          <Link href="/users/documents/view" style={docLink}>
+          <Link
+            href="/users/documents/view"
+            className="block py-2 text-[#1F5F8B] hover:underline"
+          >
             Marksheet
           </Link>
         </li>
         <li>
-          <Link href="/users/documents/view" style={docLink}>
+          <Link
+            href="/users/documents/view"
+            className="block py-2 text-[#1F5F8B] hover:underline"
+          >
             Degree Certificate
           </Link>
         </li>
@@ -20,22 +26,3 @@ export default function DocumentsPage() {
     </div>
   );
 }
-
-const card = {
-  backgroundColor: "#FFFFFF",
-  padding: "20px",
-  borderRadius: "6px",
-  border: "1px solid #E0E0E0",
-};
-
-const list = {
-  listStyle: "none",
-  padding: 0,
-};
-
-const docLink = {
-  color: "#1F5F8B",
-  textDecoration: "none",
-  display: "block",
-  padding: "8px 0",
-};

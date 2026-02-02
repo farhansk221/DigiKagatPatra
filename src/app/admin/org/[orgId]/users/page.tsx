@@ -10,44 +10,46 @@ export default function AdminOrgUsersPage() {
 
   if (!org) {
     return (
-      <div className="dashboard-content">
-        <div className="dashboard-header">
-          <h1 className="dashboard-title">Organization Users</h1>
+      <div className="text-gray-900">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-[#0B3C5D] mb-2">Organization Users</h1>
         </div>
-        <p className="welcome-subtitle">Organization not found.</p>
+        <p className="text-base text-gray-600">Organization not found.</p>
       </div>
     );
   }
 
   return (
-    <div className="dashboard-content">
-      <div className="dashboard-header">
-        <h1 className="dashboard-title">
+    <div className="text-gray-900">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-[#0B3C5D] mb-2">
           Users · <span>{org.name}</span>
         </h1>
       </div>
-      <p className="welcome-subtitle" style={{ marginBottom: "24px" }}>
+      <p className="text-base text-gray-600 mb-6">
         Showing users for org <strong>{org.id}</strong>.
       </p>
 
-      <table>
-        <thead>
-          <tr>
-            <th>User</th>
-            <th>Email</th>
-            <th>Role</th>
-          </tr>
-        </thead>
-        <tbody>
-          {org.users.map(user => (
-            <tr key={user.id}>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
-              <td>{user.role}</td>
+      <div className="overflow-x-auto rounded-lg border border-gray-300 shadow-sm">
+        <table className="w-full">
+          <thead>
+            <tr className="bg-gray-100 border-b border-gray-300">
+              <th className="text-left text-gray-700 px-4 py-3 font-semibold text-sm">User</th>
+              <th className="text-left text-gray-700 px-4 py-3 font-semibold text-sm">Email</th>
+              <th className="text-left text-gray-700 px-4 py-3 font-semibold text-sm">Role</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {org.users.map(user => (
+              <tr key={user.id} className="border-b border-gray-200 hover:bg-gray-50 transition-colors">
+                <td className="text-gray-700 px-4 py-3 text-sm">{user.name}</td>
+                <td className="text-gray-700 px-4 py-3 text-sm">{user.email}</td>
+                <td className="text-gray-700 px-4 py-3 text-sm">{user.role}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

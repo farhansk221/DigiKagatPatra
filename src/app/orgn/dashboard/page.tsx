@@ -5,84 +5,44 @@ import { organizations } from "@/data/organizations";
 
 export default function DashboardPage() {
   return (
-    <div style={card}>
-      <h3> Organizations</h3>
-      <p style={{ marginBottom: "20px", color: "#666" }}>Select an organization to manage its users.</p>
+    <div className="bg-white p-5 rounded-md border border-gray-300">
+      <h3 className="text-lg font-semibold mb-4"> Organizations</h3>
+      <p className="mb-5 text-gray-600\">Select an organization to manage its users.</p>
       
-      <table style={tableStyle}>
-        <thead>
-          <tr style={headerRowStyle}>
-            <th style={headerCellStyle}>Org ID</th>
-            <th style={headerCellStyle}>Name</th>
-            <th style={headerCellStyle}>Country</th>
-            <th style={headerCellStyle}>Users</th>
-            <th style={headerCellStyle}>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {organizations.map((org) => (
-            <tr key={org.id} style={bodyRowStyle}>
-              <td style={cellStyle}>{org.id}</td>
-              <td style={cellStyle}>{org.name}</td>
-              <td style={cellStyle}>{org.country}</td>
-              <td style={cellStyle}>{org.users.length}</td>
-              <td style={cellStyle}>
-                <Link href={`/orgn/${org.id}/users`} style={manageButtonStyle}>
-                  Manage Users
-                </Link>
-              </td>
+      <div className="overflow-x-auto">
+        <table className="w-full border-collapse">
+          <thead>
+            <tr className="bg-gray-100 border-b-2 border-gray-300\">
+              <th className="px-3 py-3 text-left font-semibold text-[#003366]">Org ID</th>
+              <th className="px-3 py-3 text-left font-semibold text-[#003366]">Name</th>
+              <th className="px-3 py-3 text-left font-semibold text-[#003366]">Country</th>
+              <th className="px-3 py-3 text-left font-semibold text-[#003366]">Users</th>
+              <th className="px-3 py-3 text-left font-semibold text-[#003366]">Action</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {organizations.map((org) => (
+              <tr key={org.id} className="border-b border-gray-300">
+                <td className="px-3 py-3 text-left">{org.id}</td>
+                <td className="px-3 py-3 text-left">{org.name}</td>
+                <td className="px-3 py-3 text-left">{org.country}</td>
+                <td className="px-3 py-3 text-left">{org.users.length}</td>
+                <td className="px-3 py-3 text-left">
+                  <Link 
+                    href={`/orgn/${org.id}/users`} 
+                    className="px-4 py-2 border border-[#003366] text-[#003366] bg-white rounded text-sm font-medium hover:bg-gray-50 transition-colors inline-block"
+                  >
+                    Manage Users
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
 
 
-const card = {
-  backgroundColor: "#fff",
-  padding: "20px",
-  borderRadius: "6px",
-  border: "1px solid #E0E0E0",
-};
 
-const tableStyle = {
-  width: "100%",
-  borderCollapse: "collapse" as const,
-};
-
-const headerRowStyle = {
-  backgroundColor: "#f5f5f5",
-  borderBottom: "2px solid #ddd",
-};
-
-const headerCellStyle = {
-  padding: "12px",
-  textAlign: "left" as const,
-  fontWeight: "600",
-  color: "#003366",
-};
-
-const bodyRowStyle = {
-  borderBottom: "1px solid #E0E0E0",
-};
-
-const cellStyle = {
-  padding: "12px",
-  textAlign: "left" as const,
-};
-
-const manageButtonStyle = {
-  padding: "8px 16px",
-  border: "1px solid #003366",
-  color: "#003366",
-  backgroundColor: "#fff",
-  borderRadius: "4px",
-  cursor: "pointer",
-  fontSize: "14px",
-  fontWeight: "500",
-  textDecoration: "none",
-  display: "inline-block",
-};
-  
