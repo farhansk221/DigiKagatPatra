@@ -1,10 +1,8 @@
 "use client";
 
-import DashboardLayout from "../../dashboard/DashboardLayout";
-
 export default function DashboardPage() {
   return (
-    <DashboardLayout>
+    <div>
       <div className="dashboard-header">
         <h1 className="dashboard-title">Dashboard</h1>
       </div>
@@ -14,7 +12,6 @@ export default function DashboardPage() {
           Select an option from the sidebar to continue.
         </p>
       </div>
-    </DashboardLayout>
+    </div>
   );
 }
-

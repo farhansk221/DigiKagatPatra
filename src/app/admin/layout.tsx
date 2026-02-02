@@ -1,56 +1,66 @@
 // app/admin/layout.tsx
 
+import Sidebar from "@/components/ui/Sidebar";
+
 export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <div style={{ flex: 1 }}>{children}</div>
-
-      <footer
-        className="section-footer"
+    <div className="flex flex-row">
+      <Sidebar />
+      <div
         style={{
-          marginLeft: "250px", // align with sidebar
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          marginLeft: "250px", // width of sidebar
         }}
       >
-        <div
+        <div style={{ flex: 1 }}>{children}</div>
+
+        <footer
+          className="section-footer"
           style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexWrap: "wrap",
-            gap: "8px",
+            marginLeft: "250px", // align with sidebar
           }}
         >
-          {/* Left side */}
-          <div>
-            <strong>DigiKagatPatra</strong> Admin Panel  
-            <span style={{ marginLeft: 8, opacity: 0.7 }}>
-              v1.0.0
-            </span>
-          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexWrap: "wrap",
+              gap: "8px",
+            }}
+          >
+            {/* Left side */}
+            <div>
+              <strong>DigiKagatPatra</strong> Admin Panel
+              <span style={{ marginLeft: 8, opacity: 0.7 }}>v1.0.0</span>
+            </div>
 
-          {/* Center */}
-          <div style={{ opacity: 0.7 }}>
-            Logged in as <strong>Administrator</strong>
-          </div>
+            {/* Center */}
+            <div style={{ opacity: 0.7 }}>
+              Logged in as <strong>Administrator</strong>
+            </div>
 
-          {/* Right side */}
-          <div style={{ display: "flex", gap: "16px" }}>
-            <a href="#" style={{ fontSize: "13px" }}>Help</a>
-            <a href="#" style={{ fontSize: "13px" }}>Docs</a>
-            <a href="#" style={{ fontSize: "13px" }}>Privacy</a>
+            {/* Right side */}
+            <div style={{ display: "flex", gap: "16px" }}>
+              <a href="#" style={{ fontSize: "13px" }}>
+                Help
+              </a>
+              <a href="#" style={{ fontSize: "13px" }}>
+                Docs
+              </a>
+              <a href="#" style={{ fontSize: "13px" }}>
+                Privacy
+              </a>
+            </div>
           </div>
-        </div>
-      </footer>
+        </footer>
+      </div>
     </div>
   );
 }
