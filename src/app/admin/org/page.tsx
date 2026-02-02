@@ -1,6 +1,7 @@
 "use client";
 
 import { organizations } from "@/data/organizations";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function AdminOrgListPage() {
@@ -46,6 +47,11 @@ export default function AdminOrgListPage() {
               ))}
             </tbody>
           </table>
+        </div>
+        <div>
+          <button className="bg-[#0B3C5D] text-white mt-3 px-4 py-2 rounded-md text-sm font-medium hover:bg-[#0A2F4A] transition-colors">
+              <Link href="/admin/org/create_org">Add Organization</Link>
+          </button>
         </div>
       </div>
     

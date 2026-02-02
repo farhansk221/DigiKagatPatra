@@ -62,6 +62,8 @@ export const AuthService = {
     return null;
   },
 
+  
+
   signupWithEmail: async (
     email: string,
     password: string
