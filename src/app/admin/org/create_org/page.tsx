@@ -89,7 +89,7 @@ export default function CreateOrganisation() {
       </form>
 
       <Link
-        href="/organisations"
+        href="/admin/org"
         className="text-[#1F5F8B] hover:underline inline-block mt-4"
       >
         Back to Organisations

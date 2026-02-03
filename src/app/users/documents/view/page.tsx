@@ -30,7 +30,7 @@ const [userDocuments, setUserDocuments] = useState<any[]>([]);
     } catch (error) {
       console.error("Error fetching user documents:");
     }
-  }),[];
+  });
 
 
 
