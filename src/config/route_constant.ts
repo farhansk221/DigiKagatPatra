@@ -24,10 +24,10 @@ export const route_constants = {
 
     // User Management routes
     Users: {
+        AUDIT_ALL_DOCUMENTS:"/api/audit/",
         create_user: "/api/organisations/organisations/{org_id}/users/add",                   
         update_user_status: "/api/organisations/user-role/{uor_id}/status",               
         update_user_role: "/api/organisations/user-role/{uor_id}/end-date",
-
 
 }
 }

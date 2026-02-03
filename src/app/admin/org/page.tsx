@@ -2,6 +2,7 @@
 
 import Table from "@/components/ui/Table";
 import { organizations } from "@/data/organizations";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function AdminOrgListPage() {
