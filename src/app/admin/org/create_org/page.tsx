@@ -19,19 +19,22 @@ export default function CreateOrganisation() {
 
     try {
       const firebaseToken = await AuthService.getUserAccessToken();
-
+      console.log(firebaseToken);
       await axios.post(
-        `http://localhost:8000${route_constants.Organisation.create_org}`,
+        `http://localhost:8000${route_constants.Organisation.create_org}register/`,
         {
-          name,
-          description,
+          organisation_name: name,
+          email: "unknowncoder705@gmail.com",
+          password: "12345678",
+          username: "orgadmin",
+          // description,
         },
         {
           headers: {
             Authorization: `Bearer ${firebaseToken}`,
             "Content-Type": "application/json",
           },
-        }
+        },
       );
 
       setName("");
@@ -64,9 +67,7 @@ export default function CreateOrganisation() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">
-            Description
-          </label>
+          <label className="block text-sm font-medium mb-1">Description</label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
