@@ -108,10 +108,10 @@ export default function AdminOrgListPage() {
                   <button
                     className="border border-[#0B3C5D] text-[#0B3C5D] px-4 py-2 rounded-md text-sm hover:bg-gray-50"
                     onClick={() =>
-                      router.push(`/admin/org/${org.id}/users`)
+                      router.push(`/admin/org/${org.id}/dashboard`)
                     }
                   >
-                    Manage Users
+                    See Organisation
                   </button>
                 </td>
               </tr>
