@@ -38,7 +38,7 @@ export default function create_orgn() {
             setError("Something went wrong. Please try again.");
         } finally {
             setLoading(false);
-            
+
         }
     };
 
@@ -50,15 +50,18 @@ export default function create_orgn() {
             <form className="space-y-4" onSubmit={handleSubmit}>
 
                 <div>
-                    <label className="block text-sm font-medium mb-1">
-                        Organisation Name
-                    </label>
                     <input
                         type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                         placeholder="Enter organisation name"
                         className="w-full border border-gray-300 rounded px-3 py-2"
+                        required
                     />
                 </div>
+
+
+
 
 
                 <div>
@@ -67,9 +70,13 @@ export default function create_orgn() {
                     </label>
                     <textarea
                         rows={4}
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
                         placeholder="Enter description"
                         className="w-full border border-gray-300 rounded px-3 py-2"
+                        required
                     />
+
                 </div>
 
                 <button
