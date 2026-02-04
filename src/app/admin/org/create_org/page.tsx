@@ -7,8 +7,11 @@ import { route_constants } from "@/config/route_constant";
 import Link from "next/link";
 
 export default function CreateOrganisation() {
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+  const [organisationName, setOrganisationName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -19,28 +22,30 @@ export default function CreateOrganisation() {
 
     try {
       const firebaseToken = await AuthService.getUserAccessToken();
-      console.log(firebaseToken);
+
       await axios.post(
         `http://localhost:8000${route_constants.Organisation.create_org}register/`,
         {
-          organisation_name: name,
-          email: "unknowncoder705@gmail.com",
-          password: "12345678",
-          username: "orgadmin",
-          // description,
+          organisation_name: organisationName,
+          username: username,
+          email: email,
+          password: password,
         },
         {
           headers: {
             Authorization: `Bearer ${firebaseToken}`,
             "Content-Type": "application/json",
           },
-        },
+        }
       );
 
-      setName("");
-      setDescription("");
+      setOrganisationName("");
+      setUsername("");
+      setEmail("");
+      setPassword("");
+
       alert("Organisation created successfully");
-    } catch (err: any) {
+    } catch (err) {
       console.error(err);
       setError("Failed to create organisation");
     } finally {
@@ -53,26 +58,52 @@ export default function CreateOrganisation() {
       <h2 className="text-xl font-semibold mb-4">Create Organisation</h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Organisation Name */}
         <div>
           <label className="block text-sm font-medium mb-1">
             Organisation Name
           </label>
           <input
             type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={organisationName}
+            onChange={(e) => setOrganisationName(e.target.value)}
             required
             className="w-full border border-gray-300 rounded px-3 py-2"
           />
         </div>
 
+        {/* Username */}
         <div>
-          <label className="block text-sm font-medium mb-1">Description</label>
-          <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+          <label className="block text-sm font-medium mb-1">Username</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             required
-            rows={4}
+            className="w-full border border-gray-300 rounded px-3 py-2"
+          />
+        </div>
+
+        {/* Email */}
+        <div>
+          <label className="block text-sm font-medium mb-1">Email</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="w-full border border-gray-300 rounded px-3 py-2"
+          />
+        </div>
+
+        {/* Password */}
+        <div>
+          <label className="block text-sm font-medium mb-1">Password</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
             className="w-full border border-gray-300 rounded px-3 py-2"
           />
         </div>

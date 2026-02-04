@@ -40,6 +40,9 @@ export default function DashboardPage() {
           </tbody>
         </table>
       </div>
+      <Link href="/orgn/create_orgn" className="text-white border bg-[#1F5F8B] hover:underline inline-block mt-4">
+        <button className="px-4 py-2 rounded-lg bg-[#1F5F8B]">Create Organisation</button>
+      </Link>
     </div>
   );
 }

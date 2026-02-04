@@ -13,6 +13,7 @@ const [userDocuments, setUserDocuments] = useState<any[]>([]);
     try {
       const fetchData = async () => {
         const firebaseToken = await AuthService.getUserAccessToken();
+        console.log("Firebase Token:", firebaseToken);
         const response = await axios.get(
           `http://localhost:8000${route_constants.Users.AUDIT_ALL_DOCUMENTS}`,
           {
@@ -42,7 +43,7 @@ const [userDocuments, setUserDocuments] = useState<any[]>([]);
       </p>
  <ul>
   {Array.isArray(userDocuments) &&
-    userDocuments.map((doc: any) => (
+    userDocuments.map((doc: any) => ( 
       <li key={doc.id} className="mb-4 border-b pb-3">
         <p><strong>Audit ID:</strong> {doc.id}</p>
         <p><strong>Action:</strong> {doc.action}</p>

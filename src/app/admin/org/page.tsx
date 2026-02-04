@@ -1,12 +1,68 @@
 "use client";
 
-import Table from "@/components/ui/Table";
-import { organizations } from "@/data/organizations";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { AuthService } from "@/config/firebase";
+import { route_constants } from "@/config/route_constant";
+
+interface Creator {
+  id: number;
+  username: string;
+  full_name: string;
+}
+
+interface Organisation {
+  id: number;
+  name: string;
+  description: string;
+  created_at: string;
+  creator: Creator;
+  member_count: number;
+  roles_assigned: string[];
+}
 
 export default function AdminOrgListPage() {
   const router = useRouter();
+  const [organizations, setOrganizations] = useState<Organisation[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string>("");
+
+  useEffect(() => {
+    const fetchOrganizations = async () => {
+      try {
+        const token = await AuthService.getUserAccessToken();
+        console.log(token)
+        const res = await axios.get(
+          `http://localhost:8000${route_constants.Organisation.org}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        setOrganizations(res.data);
+        console.log("Fetched organizations:", res.data);
+      } catch (err) {
+        setError("Failed to load organisations");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchOrganizations();
+  }, []);
+
+  if (loading) {
+    return <p className="text-gray-600">Loading organisations...</p>;
+  }
+
+  if (error) {
+    return <p className="text-red-600">{error}</p>;
+  }
 
   return (
     <div className="text-gray-900">
@@ -15,6 +71,7 @@ export default function AdminOrgListPage() {
           Admin · Organizations
         </h1>
       </div>
+
       <p className="text-base text-gray-600 mb-6">
         Select an organization to manage its users.
       </p>
@@ -23,50 +80,54 @@ export default function AdminOrgListPage() {
         <table className="w-full">
           <thead>
             <tr className="bg-gray-100 border-b border-gray-300">
-              <th className="text-left text-gray-700 px-4 py-3 font-semibold text-sm">
+              <th className="px-4 py-3 text-left text-sm font-semibold">
                 Org ID
               </th>
-              <th className="text-left text-gray-700 px-4 py-3 font-semibold text-sm">
+              <th className="px-4 py-3 text-left text-sm font-semibold">
                 Name
               </th>
-              <th className="text-left text-gray-700 px-4 py-3 font-semibold text-sm">
-                Country
+              <th className="px-4 py-3 text-left text-sm font-semibold">
+                Description
               </th>
-              <th className="text-left text-gray-700 px-4 py-3 font-semibold text-sm">
-                Users
-              </th>
-              <th className="text-left text-gray-700 px-4 py-3 font-semibold text-sm"></th>
+              <th className="px-4 py-3"></th>
             </tr>
           </thead>
+
           <tbody>
-            {organizations.map((org) => (
+            {Array.isArray(organizations) &&
+            organizations.map((org) => (
               <tr
                 key={org.id}
-                className="border-b border-gray-200 hover:bg-gray-50 transition-colors"
+                className="border-b border-gray-200 hover:bg-gray-50"
               >
-                <td className="text-gray-700 px-4 py-3 text-sm">{org.id}</td>
-                <td className="text-gray-700 px-4 py-3 text-sm">{org.name}</td>
-                <td className="text-gray-700 px-4 py-3 text-sm">
-                  {org.country}
-                </td>
-                <td className="text-gray-700 px-4 py-3 text-sm">
-                  {org.users.length}
-                </td>
-                <td className="text-gray-700 px-4 py-3 text-sm">
+                <td className="px-4 py-3 text-sm">{org.id}</td>
+                <td className="px-4 py-3 text-sm">{org.name}</td>
+                <td className="px-4 py-3 text-sm">{org.description}</td>
+                
+                <td className="px-4 py-3 text-sm">
                   <button
-                    className="bg-white text-[#0B3C5D] border border-[#0B3C5D] px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-50 transition-colors"
-                    onClick={() => router.push(`/admin/org/${org.id}/users`)}
+                    className="border border-[#0B3C5D] text-[#0B3C5D] px-4 py-2 rounded-md text-sm hover:bg-gray-50"
+                    onClick={() =>
+                      router.push(`/admin/org/${org.id}/users`)
+                    }
                   >
                     Manage Users
                   </button>
                 </td>
               </tr>
             ))}
+            
           </tbody>
         </table>
       </div>
-      <Link href="/admin/org/create_org" className="text-white border bg-[#1F5F8B] hover:underline inline-block mt-4">
-        <button className="px-4 py-2 rounded-lg bg-[#1F5F8B]">Create Organisation</button>
+
+      <Link
+        href="/admin/org/create_org"
+        className="inline-block mt-4"
+      >
+        <button className="bg-[#1F5F8B] text-white px-4 py-2 rounded-lg">
+          Create Organisation
+        </button>
       </Link>
     </div>
   );
